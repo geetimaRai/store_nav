@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
 
-  layout 'admin'
+  #layout 'admin'
 
   
   before_action :set_store, only: [:show, :edit, :update, :destroy]

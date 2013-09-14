@@ -14,7 +14,7 @@
   <tbody>
     <% @stores.each do |store| %>
       <tr>
-        <td><%= link_to store.name, {:controller => :departments, :action => 'index',:department_id => store.departments.all} %></td>
+        <td><%= store.name%></td>
         <td><%= store.location %></td>
         <td class="center"><%= store.map %></td>
        <td><%= link_to 'Show', store %></td>

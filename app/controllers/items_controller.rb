@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
-  
-  layout 'admin'
+  #layout 'admin'
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items

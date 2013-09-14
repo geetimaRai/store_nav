@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   
-  layout 'admin'
+  #layout 'admin'
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
   # GET /departments
@@ -10,7 +10,7 @@ class DepartmentsController < ApplicationController
   end
 
   def list      #NOT WORKING
-    render action: 'index'
+    @departments = Department.all.order(":name ASC")
   end
 
   # GET /departments/1
