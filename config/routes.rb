@@ -1,9 +1,13 @@
 StoreNav::Application.routes.draw do
- # get "static_pages/home"
-  #get "static_pages/help"
-  #get "static_pages/about"
-  #get "static_pages/contact"
-  root to: 'static_pages#home'
+
+  get "users/new"
+  #root_path => '/'
+  #root_url => 'http://localhost:3000'
+  root to: 'static_pages#home' 
+  match '/signup', to: 'users#new'   ,:via => [:get]
+  
+
+
   match '/', to: 'static_pages#home'   ,:via => [:get]   #defining named routes
   match '/help', to: 'static_pages#help' ,:via => [:get]   
   match '/contact', to: 'static_pages#contact' ,:via => [:get]   
