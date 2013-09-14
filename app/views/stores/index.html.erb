@@ -1,0 +1,30 @@
+<div class="store list">
+<h2>Stores</h2>
+
+<table class="listing" summary ="Store list">
+  <thead>
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Map</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stores.each do |store| %>
+      <tr>
+        <td><%= link_to store.name, {:controller => :departments, :action => 'index',:department_id => store.departments.all} %></td>
+        <td><%= store.location %></td>
+        <td class="center"><%= store.map %></td>
+       <td><%= link_to 'Show', store %></td>
+        <td><%= link_to 'Edit', edit_store_path(store) %></td>
+        <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Store', new_store_path %>

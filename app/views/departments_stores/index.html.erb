@@ -1,0 +1,29 @@
+<h1>Listing departments_stores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Department</th>
+      <th>Store</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departments_stores.each do |departments_store| %>
+      <tr>
+        <td><%= departments_store.department_id %></td>
+        <td><%= departments_store.store_id %></td>
+        <td><%= link_to 'Show', departments_store %></td>
+        <td><%= link_to 'Edit', edit_departments_store_path(departments_store) %></td>
+        <td><%= link_to 'Destroy', departments_store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Departments store', new_departments_store_path %>
