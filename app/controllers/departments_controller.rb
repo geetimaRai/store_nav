@@ -1,10 +1,16 @@
 class DepartmentsController < ApplicationController
+  
+  layout 'admin'
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
   # GET /departments
   # GET /departments.json
   def index
     @departments = Department.all.order(":name ASC")
+  end
+
+  def list      #NOT WORKING
+    render action: 'index'
   end
 
   # GET /departments/1
@@ -20,6 +26,7 @@ class DepartmentsController < ApplicationController
 
   # GET /departments/1/edit
   def edit
+     @department=Department.find(params[:id])
   end
 
   # POST /departments

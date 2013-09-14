@@ -1,10 +1,17 @@
 class ItemsController < ApplicationController
+
+  
+  layout 'admin'
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
-  def index
+  def index         
     @items = Item.all.order(":name ASC")
+  end
+
+  def list
+   @items = Item.all.order(":name ASC")
   end
 
   # GET /items/1
@@ -14,32 +21,12 @@ class ItemsController < ApplicationController
   end
 
 
-  # GET /items/new
-  def new
-    @item = Item.new
-  end
-
   # GET /items/1/edit
   def edit
+     @item=Item.find(params[:id])
   end
 
-  # POST /items
-  # POST /items.json
-  def create
-    @item = Item.new(item_params)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @item }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /items/1
+   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
@@ -47,11 +34,39 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else
+        #if save fails, it will redirect to edit template
         format.html { render action: 'edit' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
+  # GET /items/new
+  def new
+    @item = Item.new            #used in form_for in new.html.erb
+                                #can also be used to put in default values
+  end
+
+
+  # POST /items
+  # POST /items.json
+  def create
+    @item = Item.new(item_params)   #or params[:items]
+
+    respond_to do |format|
+      if @item.save           #if object is saved successfully, eg validations pass
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @item }
+      else                    
+        #if object is not saved successfully, redirect to new action
+        format.html { render action: 'new' }    #all filled fields will be prepopulated
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+ 
 
   # DELETE /items/1
   # DELETE /items/1.json

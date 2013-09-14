@@ -1,9 +1,18 @@
 class StoresController < ApplicationController
+
+  layout 'admin'
+
+  
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
   # GET /stores
   # GET /stores.json
+
   def index
+     @stores = Store.order("stores.name ASC")
+  end
+
+  def list
     @stores = Store.order("stores.name ASC")
   end
 
@@ -20,6 +29,7 @@ class StoresController < ApplicationController
 
   # GET /stores/1/edit
   def edit
+    @store=Store.find(params[:id])
   end
 
   # POST /stores
@@ -41,6 +51,7 @@ class StoresController < ApplicationController
   # PATCH/PUT /stores/1
   # PATCH/PUT /stores/1.json
   def update
+    #Find object using form parameters
     respond_to do |format|
       if @store.update(store_params)
         format.html { redirect_to @store, notice: 'Store was successfully updated.' }
