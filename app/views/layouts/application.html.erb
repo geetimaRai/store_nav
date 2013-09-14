@@ -5,17 +5,19 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
+
 <body>
+	<%= render 'layouts/header' %>
 	<header class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<%= link_to "store nav", '#', id: "logo" %>
+				<%= link_to "store nav", root_path, id: "logo" %>
 					<nav>
 						<ul class="nav pull-right">
-							<li><%= link_to "Home", '#' %></li>
-							<li><%= link_to "About Us", '#' %></li>
-							<li><%= link_to "Help", '#' %></li>
+							<li><%= link_to "Home", root_path %></li>
+							<li><%= link_to "Help", help_path %></li>
 							<li><%= link_to "Sign in", '#' %></li>
 						</ul>
 					</nav>
@@ -25,6 +27,7 @@
 	<div class="container">
 
 		<%= yield %>  
+		 <%= render 'layouts/footer' %>
 	</div>            <!--yields to the templates-->
 
 </body>

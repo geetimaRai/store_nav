@@ -1,10 +1,15 @@
 StoreNav::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
-  resources :departments_stores
+ # get "static_pages/home"
+  #get "static_pages/help"
+  #get "static_pages/about"
+  #get "static_pages/contact"
+  root to: 'static_pages#home'
+  match '/', to: 'static_pages#home'   ,:via => [:get]   #defining named routes
+  match '/help', to: 'static_pages#help' ,:via => [:get]   
+  match '/contact', to: 'static_pages#contact' ,:via => [:get]   
+  match '/about', to: 'static_pages#about' ,:via => [:get]   
 
-  resources :department_stores
+  resources :departments_stores
 
   resources :items
 
