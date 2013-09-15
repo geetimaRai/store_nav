@@ -13,6 +13,8 @@ StoreNav::Application.routes.draw do
   match '/contact', to: 'static_pages#contact' ,:via => [:get]   
   match '/about', to: 'static_pages#about' ,:via => [:get]   
 
+   resources :users  # to get RESTful style URI to work
+
   resources :departments_stores
 
   resources :items
