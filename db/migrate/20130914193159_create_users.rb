@@ -7,8 +7,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_confirmation
       t.text :password_digest
 
+
       t.timestamps
     end
-   add_index :email, unique: true
+   
   end
 end

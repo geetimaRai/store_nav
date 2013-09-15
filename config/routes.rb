@@ -13,7 +13,12 @@ StoreNav::Application.routes.draw do
   match '/contact', to: 'static_pages#contact' ,:via => [:get]   
   match '/about', to: 'static_pages#about' ,:via => [:get]   
 
-   resources :users  # to get RESTful style URI to work
+  match '/signup', to: 'users#new' ,:via => [:get]   
+  match '/signin', to: 'sessions#new' ,:via => [:get]   
+  match '/signout', to: 'sessions#destroy' ,:via =>[:delete]   #indicates that it should be invoked using http request
+
+  resources :users  # to get RESTful style URI to work
+  resources :sessions , only: [:new, :create, :destroy]
 
   resources :departments_stores
 
