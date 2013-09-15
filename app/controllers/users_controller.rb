@@ -13,16 +13,14 @@ class UsersController < ApplicationController
 
   def create
 	@user = User.new(user_params)
-	respond_to do |format|
-      if @user.save           #if object is saved successfully, eg validations pass
-        format.html { redirect_to @user, notice: 'Welcome to StoreNav. You are a member now!' }
-        format.json { render action: 'show', status: :created, location: @user }
+	
+      if @user.save    
+        flash[:success]="Welcome to StoreNav! You are a member now!"       #if object is saved successfully, eg validations pass
+        redirect_to @user
       else                    
         #if object is not saved successfully, redirect to new action
-        format.html { render action: 'new' }    #all filled fields will be prepopulated
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
   end
 
   private
