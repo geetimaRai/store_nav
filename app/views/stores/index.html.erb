@@ -21,7 +21,8 @@
   <tbody>
     <% @stores.each do |store| %>
       <tr>
-        <td><%= link_to(store.name,'/departments') %></td>
+        <td><%= link_to (store.name,:update=> "ajax_result", :url=> {:controller => 'departments', :action => 'index'}, :remote=> true %></td>
+        <div id = "ajax_result"></div> 
         <td><%= store.location %></td>
        </tr>
     <% end %>
