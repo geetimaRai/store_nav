@@ -1,28 +1,32 @@
-<h1>Listing items</h1>
-
+<div class="item list">
+<h1>Items</h1>
 <table>
   <thead>
+    <style>
+      th,td
+        {
+          border:1px solid black;
+        }
+         table
+        {
+          border:2px solid black;
+        }
+    </style>
     <tr>
-      <th>Department</th>
-      <th>Name</th>
-      <th>Isle</th>
+       <th>Name</th>
+       <th>Isle</th>
       <th>Quantity</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+   </tr>
   </thead>
 
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.department_id %></td>
         <td><%= item.name %></td>
         <td><%= item.isle %></td>
         <td><%= item.quantity %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +34,8 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'Back', departments_path %>
+
+
+
+

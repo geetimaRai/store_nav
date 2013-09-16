@@ -22,6 +22,7 @@ class StoresController < ApplicationController
     @store=Store.find(params[:id])
   end
 
+ 
   # GET /stores/new
   def new
     @store = Store.new

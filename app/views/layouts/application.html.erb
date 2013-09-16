@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> full title(yield(:title))</title>              
+  <title>full title(yield(:title))</title>              
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,28 +10,11 @@
 
 <body>
 	<%= render 'layouts/header' %>
-	<header class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<% flash.each do |key, value| %>
-					<%= content_tag(:div, value, class: "alert alert-#{key}") %>
-				<% end %>
-				<%= link_to "store nav", root_path, id: "logo" %>
-					<nav>
-						<ul class="nav pull-right">
-							<li><%= link_to "Home", root_path %></li>
-							<li><%= link_to "Help", help_path %></li>
-							<li><%= link_to "Sign in", '#' %></li>
-						</ul>
-					</nav>
-			</div>
-		</div>
-	</header>
 	<div class="container">
 
 		<%= yield %>   <!--yields to the templates-->
 		 <%= render 'layouts/footer' %>
-		 <%= debug(params) if Rails.env.development? %>
+		<!-- <%= debug(params) if Rails.env.development? %>-->
 	</div>           
 
 </body>

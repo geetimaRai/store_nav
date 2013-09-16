@@ -15,9 +15,14 @@ group :production do
 	gem 'thin'
 end
 
+gem 'rspec-rails'
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-
+gem 'cucumber-rails',  :require => false
+gem 'database_cleaner'
 gem 'bootstrap-sass','2.0.0'
 
 #Use ActiveModel has_secure_password

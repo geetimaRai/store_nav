@@ -3,8 +3,8 @@
 	<aside class="span4">
 		<section>
            <h1>
-           		<%= gravatar_for @user %> 
-				<%= @user.name %>
+           	<%= @user.name %>
+           		
 			</h1>
 		</section>
 	</aside>		
@@ -13,5 +13,6 @@
   <strong>Email: </strong>
   <%= @user.email %>
 </p>
-
+<img src = "\images\grocery.jpg"/>
+<%= link_to "Checkout our Stores", stores_path%>
 

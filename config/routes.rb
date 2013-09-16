@@ -1,22 +1,5 @@
 StoreNav::Application.routes.draw do
 
-  get "users/new"
-  #root_path => '/'
-  #root_url => 'http://localhost:3000'
-  root to: 'static_pages#home' 
-  match '/signup', to: 'users#new'   ,:via => [:get]
-  
-
-
-  match '/', to: 'static_pages#home'   ,:via => [:get]   #defining named routes
-  match '/help', to: 'static_pages#help' ,:via => [:get]   
-  match '/contact', to: 'static_pages#contact' ,:via => [:get]   
-  match '/about', to: 'static_pages#about' ,:via => [:get]   
-
-  match '/signup', to: 'users#new' ,:via => [:get]   
-  match '/signin', to: 'sessions#new' ,:via => [:get]   
-  match '/signout', to: 'sessions#destroy' ,:via =>[:delete]   #indicates that it should be invoked using http request
-
   resources :users  # to get RESTful style URI to work
   resources :sessions , only: [:new, :create, :destroy]
 
@@ -27,6 +10,26 @@ StoreNav::Application.routes.draw do
   resources :departments
 
   resources :stores
+  #root_path => '/'
+  #root_url => 'http://localhost:3000'
+
+  match '/signin', to: 'sessions#new' ,:via => [:get]   
+  match '/signout', to: 'sessions#destroy' ,:via =>[:delete]  
+  
+
+  
+  match '/', to: 'static_pages#home'   ,:via => [:get]   #defining named routes
+  match '/help', to: 'static_pages#help' ,:via => [:get]   
+  match '/contact', to: 'static_pages#contact' ,:via => [:get]   
+  match '/about', to: 'static_pages#about' ,:via => [:get]   
+  match '/signup', to: 'users#new' ,:via => [:get]  
+  root to: 'static_pages#home' 
+
+  match '/departmentstore', to: 'stores#departmentstore'   ,:via => [:get] 
+   
+   #indicates that it should be invoked using http request
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

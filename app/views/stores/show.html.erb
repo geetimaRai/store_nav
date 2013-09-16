@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
+<div class="store show">
+	<h1>Stores</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @store.name %>
-</p>
+<table summary="Store detail view">
+ <tr>
+	<th>Name</th>
+	<td><%= @store.name %><td>
+ </tr>
+ <tr>
+	<th>Location</th>
+	<td><%= @store.location %><td>
+ </tr>
+ <tr>
+	<th>Map</th>
+	<td><%= @store.map%><td>
+ </tr>
+ </table>
+</div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @store.location %>
-</p>
-
-<p>
-  <strong>Map:</strong>
-  <%= @store.map %>
-</p>
-
-<%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>
