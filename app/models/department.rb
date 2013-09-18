@@ -1,5 +1,5 @@
 class Department < ActiveRecord::Base
 	#attr_accessor :name
-	has_and_belongs_to_many :stores
+	belongs_to :store, {:foreign_key => :store_id}
 	has_many :items
 end

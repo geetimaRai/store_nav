@@ -3,10 +3,12 @@ class ItemsController < ApplicationController
   #layout 'admin'
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+    before_filter :find_department
+
   # GET /items
   # GET /items.json
   def index         
-    @items = Item.all.order(":name ASC")
+    @items = Item.all.order(":name ASC").where(:department_id => @department.id)
   end
 
   def list
@@ -86,5 +88,11 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:department_id, :name, :isle, :quantity)
+    end
+
+     def find_department
+      if(params[:department_id])
+        @department=Department.find_by_id(params[:department_id])
+      end
     end
 end

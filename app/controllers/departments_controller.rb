@@ -2,11 +2,13 @@ class DepartmentsController < ApplicationController
   
   #layout 'admin'
   before_action :set_department, only: [:show, :edit, :update, :destroy]
+  
+  before_filter :find_store, only: [:index]
 
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.all.order(":name ASC")
+    @departments = Department.all.order("name ASC").where(:store_id => @store.id)
   end
 
   def list      #NOT WORKING
@@ -21,6 +23,7 @@ class DepartmentsController < ApplicationController
 
   # GET /departments/new
   def new
+   
     @department = Department.new
   end
 
@@ -78,5 +81,11 @@ class DepartmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
       params.require(:department).permit(:name)
+    end
+
+    def find_store
+      if(params[:store_id])
+        @store=Store.find_by_id(params[:store_id])
+      end
     end
 end

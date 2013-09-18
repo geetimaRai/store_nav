@@ -25,7 +25,7 @@ StoreNav::Application.routes.draw do
   match '/signup', to: 'users#new' ,:via => [:get]  
   root to: 'static_pages#home' 
 
-  match '/departmentstore', to: 'stores#departmentstore'   ,:via => [:get] 
+  
    
    #indicates that it should be invoked using http request
 

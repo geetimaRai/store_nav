@@ -21,7 +21,7 @@
   <tbody>
     <% @departments.each do |department| %>
       <tr>
-        <td><%= link_to(department.name, '/items') %></td>
+        <td><%= link_to(department.name, {:controller=> 'items', :action =>'index', :department_id => department.id})%></td>
        </tr>
     <% end %>
   </tbody>
@@ -29,7 +29,7 @@
 
 <br>
 
-<%= link_to 'Back', stores_path %>
+<%= link_to("<< Back to Stores", {:controller => "stores", :action => 'index', :class => 'back-link'})%>
 
 
      

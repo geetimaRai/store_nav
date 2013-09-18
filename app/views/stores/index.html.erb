@@ -21,9 +21,8 @@
   <tbody>
     <% @stores.each do |store| %>
       <tr>
-        <td><%= link_to (store.name,:update=> "ajax_result", :url=> {:controller => 'departments', :action => 'index'}, :remote=> true %></td>
-        <div id = "ajax_result"></div> 
-        <td><%= store.location %></td>
+         <td><%= link_to(store.name, {:controller=> 'departments', :action =>'index', :store_id => store.id})%></td>
+          <td><%= store.location%></td>
        </tr>
     <% end %>
   </tbody>
@@ -31,6 +30,6 @@
 
 <br>
 
-<!--<%= link_to 'Back', user_path(params[:id]) %>-->
+<%= link_to 'Back', user_path(params[:id]) %>
 
 

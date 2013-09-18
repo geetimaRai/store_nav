@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20130915170804) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "store_id"
   end
 
   create_table "departments_stores", force: true do |t|
