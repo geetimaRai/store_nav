@@ -58,11 +58,11 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save           #if object is saved successfully, eg validations pass
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @item }
-      else                    
+        format.js
+              else                    
         #if object is not saved successfully, redirect to new action
         format.html { render action: 'new' }    #all filled fields will be prepopulated
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
