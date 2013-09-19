@@ -59,11 +59,14 @@ class ItemsController < ApplicationController
       if @item.save           #if object is saved successfully, eg validations pass
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.js
+        format.xml
               else                    
         #if object is not saved successfully, redirect to new action
         format.html { render action: 'new' }    #all filled fields will be prepopulated
         format.js
-      end
+        format.xml
+        
+ end
     end
   end
 
