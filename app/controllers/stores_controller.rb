@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
 
   #layout 'admin'
-
+before_filter :signed_in_user
   
   #before_action :set_store, only: [:show, :edit, :update, :destroy]
 
