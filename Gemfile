@@ -21,8 +21,13 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+
+group :test do
 gem 'cucumber-rails',  :require => false
 gem 'database_cleaner'
+gem 'capybara'
+
+end
 gem 'bootstrap-sass','2.0.0'
 
 #Use ActiveModel has_secure_password

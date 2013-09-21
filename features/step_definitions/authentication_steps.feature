@@ -1,30 +1,30 @@
 Feature: Signing in
 
-	Given /ˆa user visits the signin page$/ {
+	Given /ˆa user visits the signin page$/ do
 			visit 'signin_path'
-		}
-		When /ˆhe submits invalid signin information$/ {
+		end
+		When /ˆhe submits invalid signin information$/ do
 			click_button "Sign in"
-		}
+		end
 
-		Then /ˆhe should see an error message$/ {
+		Then /ˆhe should see an error message$/ do
 			page.should have_selector('div.alert.alert-error')
-		}
-	Given /ˆthe user has an account$/ {
-     	 @user = User.new(:name => "Example User", :email => "user@example.com", :password => "foobar", :password_confirmation => "foobar")
-     	 @user.save
-	}
-	When /ˆthe user submits valid signin information$/ {
-			fill_in "Email", with: @user.email
-			fill_in "Password", with: @user.password
+		end
+	Given /ˆthe user has an account$/ do
+     	 user = User.new(:name => "Example User", :email => "user@example.com", :password => "foobar", :password_confirmation => "foobar")
+     	 user.save
+	end
+	When /ˆthe user submits valid signin information$/ do
+			fill_in "Email", with: user.email
+			fill_in "Password", with: user.password
 			click_button "Sign in"
-		}
+		end
 
-		Then /ˆhe should see his profile page$/ {
-			page.should have_selector('title', text: @user.name)
-		}
+		Then /ˆhe should see his profile page$/ do
+			page.should have_selector('title', text: user.name)
+		end
 
-		Then /ˆhe should see a signout link$/ {
+		Then /ˆhe should see a signout link$/ do
 			page.should have_link('Sign out', href: signout_path)
-		}
+		end
 
